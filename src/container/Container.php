@@ -82,7 +82,7 @@ class Container implements ContainerInterface
             if ($definition instanceof Closure) {
                 return $definition($this);
             }
-            if (is_object($definition)) {
+            if (is_object($definition) || (is_scalar($definition) && !class_exists($definition))) {
                 return $definition;
             }
             if (!class_exists($definition)) {
